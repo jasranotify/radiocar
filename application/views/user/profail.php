@@ -170,6 +170,11 @@ function validateFormupdateprofile()
 	?>
     </font></td>
   </tr>
+	<tr>
+    <td>Expired on</td>
+    <td>:</td>
+    <td><?php echo $data["expired_on"] ?></td>
+  </tr>
   <tr>
     <td>&nbsp;</td>
     <td>&nbsp;</td>

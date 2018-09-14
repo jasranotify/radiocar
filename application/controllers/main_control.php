@@ -8,10 +8,10 @@ class Main_control extends CI_Controller {
 	 *
 	 * Maps to the following URL
 	 * 		http://example.com/index.php/welcome
-	 *	- or -  
+	 *	- or -
 	 * 		http://example.com/index.php/welcome/index
 	 *	- or -
-	 * Since this controller is set as the default controller in 
+	 * Since this controller is set as the default controller in
 	 * config/routes.php, it's displayed at http://example.com/
 	 *
 	 * So any other public methods not prefixed with an underscore will
@@ -27,13 +27,13 @@ class Main_control extends CI_Controller {
 		$site=site_url();
 		$base=base_url();
 		date_default_timezone_set ( 'Asia/Kuala_Lumpur' );
-		
-	} 
-	
+
+	}
+
 	public function index()
 	{
-		
-		
+
+
 		$site=site_url();
 		$base=base_url();
 		$data=array(
@@ -45,27 +45,27 @@ class Main_control extends CI_Controller {
 		$this->load->view('login',$data);
 		//$this->load->view('template/footer');
 	}
-	
+
 		public function register()
 	{
-		
-		
+
+
 		$site=site_url();
 		$base=base_url();
 		$data=array(
 					'site' => site_url(),
 					'base' => base_url()
 					);
-		
-	
-		
-		
-	
+
+
+
+
+
 		$this->load->view('register',$data);
 
 	}
-	
-	
+
+
 	public function scaleImageFileToBlob($file) {
 
    //echo $source_pic = $file;
@@ -132,49 +132,49 @@ class Main_control extends CI_Controller {
 
     return $final_image;
 }
-	
-	
+
+
 	public function insert()
 	{
 		print_r($_POST);
 		$site=site_url();
 		$base=base_url();
-		
-		
+
+
 		//die();
 	$fname = $_POST['fname'];
 	//$lname = $_POST['lname'];
 	//$uname = $_POST['uname'];
 	$pswd = $_POST['pswd'];
 	$ic_no = $_POST['ic_no'];
-	
-	
+
+
 	$handphone = $_POST['handphone'];
 	$email = $_POST['email'];
 	$alamatrumah = $_POST['alamatrumah'];
 	$jeniskeahlian = $_POST['jeniskeahlian'];
 	$datefull=date("Y-m-d H:i:s");
-	
+
 	//$file_content = scaleImageFileToBlob($_FILES["gambar"]["tmp_name"]);
-	$file_content = $this->scaleImageFileToBlob($_FILES["gambar"]["tmp_name"]); 
-	//$this->abc(); 
+	$file_content = $this->scaleImageFileToBlob($_FILES["gambar"]["tmp_name"]);
+	//$this->abc();
 	$file_content = addslashes($file_content);
-	
+
 	//echo $file_content;
-	
+
 	//die();
-	
+
 
 if($email==""){
 	die("Please make Sure data is correct");
-	
+
 	}
 
 
 //check ic dh berdaftar
 $q="select count(*) from tbl_user a where a.ic='$ic_no' and flag='1'";
 list($adatak)=mysql_fetch_row(mysql_query($q));
-if($adatak!=0){	
+if($adatak!=0){
 	die("ic dah berdaftar");
 }//
 
@@ -182,124 +182,126 @@ if($adatak!=0){
 //check email dh berdaftar
 $q="select count(*) from tbl_user a where a.email='$email' and flag='1'";
 list($adatak)=mysql_fetch_row(mysql_query($q));
-if($adatak!=0){	
+if($adatak!=0){
 	die("email dah berdaftar");
 }//
 
 
 //$encrypt_pswd=md5('sha512',$pswd);
 	if($jeniskeahlian==1){
-	$sql= "INSERT INTO tbl_user set jeniskeahlian='$_POST[jeniskeahlian]',nama='$_POST[fname]', username='$ic_no', password='$pswd', dob='$_POST[dob]', ic='$_POST[ic_no]', email='$_POST[email]', alamatrumah='$_POST[alamatrumah]',pokskodrumah='$_POST[pokskodrumah]',bandarnegerirumah='$_POST[bandarnegerirumah]',alamatsurat='$_POST[alamatsurat]',poskodsurat='$_POST[poskodsurat]' ,bandarnegerisurat='$_POST[bandarnegerisurat]' ,telefonrumah='$_POST[telefonrumah]', faxrumah='$_POST[faxrumah]', handphone='$_POST[handphone]', pekerjaan='$_POST[pekerjaan]', 
+	$sql= "INSERT INTO tbl_user set jeniskeahlian='$_POST[jeniskeahlian]',nama='$_POST[fname]', username='$ic_no', password='$pswd', dob='$_POST[dob]', ic='$_POST[ic_no]', email='$_POST[email]', alamatrumah='$_POST[alamatrumah]',pokskodrumah='$_POST[pokskodrumah]',bandarnegerirumah='$_POST[bandarnegerirumah]',alamatsurat='$_POST[alamatsurat]',poskodsurat='$_POST[poskodsurat]' ,bandarnegerisurat='$_POST[bandarnegerisurat]' ,telefonrumah='$_POST[telefonrumah]', faxrumah='$_POST[faxrumah]', handphone='$_POST[handphone]', pekerjaan='$_POST[pekerjaan]',
 	alamatkerja='$_POST[alamatkerja]', poskodkerja='$_POST[poskodkerja]', bandarnegerikerja='$_POST[bandarnegerikerja]',
-	
-	tarikhlulusrae='$_POST[tarikhlulusrae]' ,callsign='$_POST[callsign]', tarikhluluscw='$_POST[tarikhluluscw]', kelasab='$_POST[kelasab]', cmcclientid='$_POST[cmcclientid]', 
-	tarikhtamatlesen='$_POST[tarikhtamatlesen]' ,alamatstesyen='$_POST[alamatstesyen]', poskodstesyen='$_POST[poskodstesyen]', bandarnegeristesyen='$_POST[bandarnegeristesyen]', datum='$_POST[datum]', 
-	kawasanoperasipancar='$_POST[kawasanoperasipancar]' ,latitut='$_POST[latitut]', longitud='$_POST[longitud]', noflat='$_POST[noflat]', jeniskenderaan='$_POST[jeniskenderaan]', 
-	mobilerigjenama1='$_POST[mobilerigjenama1]' ,mobilerignosiri1='$_POST[mobilerignosiri1]', mobilerigmodel1='$_POST[mobilerigmodel1]', mobilerigjenama2='$_POST[mobilerigjenama2]', mobilerignosiri2='$_POST[mobilerignosiri2]', 
-	mobilerigmodel2='$_POST[mobilerigmodel2]' ,mobilerigjenama3='$_POST[mobilerigjenama3]', mobilerignosiri3='$_POST[mobilerignosiri3]', mobilerigmodel3='$_POST[mobilerigmodel3]', handyjenama1='$_POST[handyjenama1]', 
-	handynosiri1='$_POST[handynosiri1]' ,handymodel1='$_POST[handymodel1]', handyjenama2='$_POST[handyjenama2]', handynosiri2='$_POST[handynosiri2]', handymodel2='$_POST[handymodel2]', 
+
+	tarikhlulusrae='$_POST[tarikhlulusrae]' ,callsign='$_POST[callsign]', tarikhluluscw='$_POST[tarikhluluscw]', kelasab='$_POST[kelasab]', cmcclientid='$_POST[cmcclientid]',
+	tarikhtamatlesen='$_POST[tarikhtamatlesen]' ,alamatstesyen='$_POST[alamatstesyen]', poskodstesyen='$_POST[poskodstesyen]', bandarnegeristesyen='$_POST[bandarnegeristesyen]', datum='$_POST[datum]',
+	kawasanoperasipancar='$_POST[kawasanoperasipancar]' ,latitut='$_POST[latitut]', longitud='$_POST[longitud]', noflat='$_POST[noflat]', jeniskenderaan='$_POST[jeniskenderaan]',
+	mobilerigjenama1='$_POST[mobilerigjenama1]' ,mobilerignosiri1='$_POST[mobilerignosiri1]', mobilerigmodel1='$_POST[mobilerigmodel1]', mobilerigjenama2='$_POST[mobilerigjenama2]', mobilerignosiri2='$_POST[mobilerignosiri2]',
+	mobilerigmodel2='$_POST[mobilerigmodel2]' ,mobilerigjenama3='$_POST[mobilerigjenama3]', mobilerignosiri3='$_POST[mobilerignosiri3]', mobilerigmodel3='$_POST[mobilerigmodel3]', handyjenama1='$_POST[handyjenama1]',
+	handynosiri1='$_POST[handynosiri1]' ,handymodel1='$_POST[handymodel1]', handyjenama2='$_POST[handyjenama2]', handynosiri2='$_POST[handynosiri2]', handymodel2='$_POST[handymodel2]',
 	handyjenama3='$_POST[handyjenama3]' ,handynosiri3='$_POST[handynosiri3]', handymodel3='$_POST[handymodel3]',gambar='$file_content',
-	
+
 	 datesubmit='$datefull',flag='1'"; // insert data arahan sql ke dalam table
-	}	
-	
+	}
+
 	if($jeniskeahlian==2){
 	$sql= "INSERT INTO tbl_user set jeniskeahlian='$_POST[jeniskeahlian]',nama='$_POST[fname]', username='$ic_no', password='$pswd', dob='$_POST[dob]', ic='$_POST[ic_no]', email='$_POST[email]', alamatrumah='$_POST[alamatrumah]',pokskodrumah='$_POST[pokskodrumah]',bandarnegerirumah='$_POST[bandarnegerirumah]',alamatsurat='$_POST[alamatsurat]',poskodsurat='$_POST[poskodsurat]' ,bandarnegerisurat='$_POST[bandarnegerisurat]' ,telefonrumah='$_POST[telefonrumah]', faxrumah='$_POST[faxrumah]', handphone='$_POST[handphone]', pekerjaan='$_POST[pekerjaan]', alamatkerja='$_POST[alamatkerja]', poskodkerja='$_POST[poskodkerja]', bandarnegerikerja='$_POST[bandarnegerikerja]',gambar='$file_content', datesubmit='$datefull',flag='1'"; // insert data arahan sql ke dalam table
-	}	
-	
-	#echo $sql;
-	
+	}
+
+	// echo $sql;
+
 	mysql_query($sql);
-	
+
+
+
 	$q="select a.id,a.nama from tbl_user a where a.ic='$ic_no' and flag='1'";
 	list($user_id,$namaahli)=mysql_fetch_row(mysql_query($q));
-	
+
 	$codeuser="UID".sprintf('%08d', $user_id);
 	mysql_query("update tbl_user set codeuser='$codeuser' where id='$user_id' and flag='1'");
 	//die();
-	
-	
+
+
 	$qemailintroducer="SELECT email FROM tbl_admin WHERE leveladmin='introducer'";
 	$remailintroducer=mysql_query($qemailintroducer);
 	$emailintroducer="sss";
 	while($dataemailintroducer=mysql_fetch_array($remailintroducer)){
 		$emailintroducer.=$dataemailintroducer["email"].",";
-		
+
 		}//while
 		$emailintroducer.="introducer@mydomain.aaasa";
 	//echo $emailintroducer;
-	
+
 	//email to admin goes here
 	$qemail=" insert into tbl_email_keluar set kategori='New Applicant',subjek='New Applicant ',uid='$codeuser', recipient_name='Introducer',receipent='$emailintroducer',sender='admin@mydomain.com',cc='',content='Apply On on: $datefull by $_POST[fname]', date_submit='$datefull',status='0'";
 	mysql_query($qemail);
 	//die();
-	
-	
-	
-	
+
+
+
+
 	 $ci = get_instance();
 	 $ci->load->library('../controllers/email_control');
 	 $penghantar="Admin";
 	 $penerima=$emailintroducer;
 	 //$tajuk="New Registration";
 	 $mesej="Pendaftaran baru daripada Usercode $codeuser $namaahli.Sila semak di system..";
-	 
-	 	
+
+
 	 //$ci->email_control->sendmail($penghantar, $penerima,$tajuk,$mesej);
-	 
+
 	 $ci->email_control->sendmail_daftarbaru($penghantar, $penerima,$codeuser,$namaahli,$_POST["email"]);
-	
+
 	//die();
-	
+
 	?>
     <script language="javascript">
 	alert("Pendaftaran Berjaya.Anda akan dimaklumkan melalui email setelah maklumat anda disahkan oleh pentadbiran.");
-	
+
 	window.location.replace("<?php echo $site; ?>");
-	
+
 	</script>
   	<?php
-	 
+
 	}
-	
-	
+
+
 		public function view_img()
 	{
-		
+
 		//$ic=$this->uri->segment(3)
 		$site=site_url();
 		$base=base_url();
 		$table=$this->uri->segment(3);
 		$id=$this->uri->segment(4);
-		
-		
+
+
 		$data=array(
 					'site' => site_url(),
 					'base' => base_url(),
 					'table' => $table,
 					'id' => $id
 					);
-		
-	
-		
-		
-	
+
+
+
+
+
 		$this->load->view('view_img',$data);
 
 	}
-	
-	
-	 
+
+
+
 	public function logout()
 	{
-		
+
 		$site=site_url();
 		$base=base_url();
-		
+
 		session_destroy();
 		header("Location: $base");
 	}
-	
+
 }
 
 /* End of file welcome.php */
