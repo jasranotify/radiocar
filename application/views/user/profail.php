@@ -4,6 +4,15 @@ $quser="SELECT a.*,b.username,b.passwordd FROM tbl_user a,tbl_login b WHERE a.co
 $r=mysql_query($quser);
 $data=mysql_fetch_array($r);
 
+
+if(isset($_POST["pswd"])){
+	$newpswd= $_POST["pswd"];
+	// print_r($_POST);die;
+	$quser="update tbl_login set passwordd='$newpswd' where username='$_POST[username]' ";
+	// echo $quser;die;
+	$r=mysql_query($quser);
+}
+
 ?><head>
 	<title>Detail User</title>
 	<link rel="shortcut icon" href="<?php echo $base;?>include/images/icon.jpg"/>
@@ -26,16 +35,16 @@ tr.noBorder td {
 <script type="text/javascript">
 <!--
 function validateform(){
-	
-var empt = document.forms["payment"]["resitbayaran"].value;  
-if (empt == "")  
-{  
-alert("Please Select receipt image");  
-return false;  
-}  
-	
-	
-	
+
+var empt = document.forms["payment"]["resitbayaran"].value;
+if (empt == "")
+{
+alert("Please Select receipt image");
+return false;
+}
+
+
+
 }//function validateform()
 
 
@@ -48,22 +57,22 @@ return false;
 
 function validateFormupdateprofile()
 {
-	
+
   var oldpass=document.forms["updateee"]["oldpass"].value;
   if (oldpass==null || oldpass==""){alert("Sila masuk oldpass");return false;}
   if (oldpass!="<?php echo $data["passwordd"]; ?>"){alert("password lama x betul");return false;}
-  
-  
-  
+
+
+
   var pswd=document.forms["updateee"]["pswd"].value;
   if (pswd==null || pswd==""){alert("Please insert new password");return false;}
-  
+
   var password1=document.forms["updateee"]["pswd"].value;
   var password2=document.forms["updateee"]["pswd2"].value;
-  
+
   //alert(password1);
   //alert(password2);
-  
+
   if(password1 != password2){
   alert("Password did not match");
   return false;
@@ -150,14 +159,14 @@ function validateFormupdateprofile()
     <td>:</td>
     <td>
     <font color="blue">
-	<?php 
+	<?php
 	$status_user=$data["status_user"];
 	if($status_user==0){echo "New submission";}
 	if($status_user==11){echo "1st Introducer Verified.Waiting For 2nd Introducer";}
 	if($status_user==1){echo "Introducer Verified Successfull.Waiting For Payment Approval";}
 	if($status_user==2){echo "Payment Approved by bendahari.Waiting For Presiden Approval";}
 	if($status_user==3){echo "Approved User";}
-	
+
 	?>
     </font></td>
   </tr>
@@ -172,14 +181,15 @@ function validateFormupdateprofile()
 
 
 <!--_______________________user profile_________________________________________________-->
-	
-	
+
+
 	</td>
     <td>
 <!--_______________________uchanged password_________________________________________________-->
-	
+
 
 <input type="hidden" name="updatetype" value="updatepassword" />
+<input type="hidden" name="username" value="<?php echo $data["username"] ?>" />
 <table width="30%">
 <tr>
   <td colspan="3" bgcolor="#E0F3E2">Change password</td>
@@ -211,8 +221,8 @@ function validateFormupdateprofile()
 </tr>
 </table>
 </form>
-	
-	
+
+
 <!--_______________________uchanged password_________________________________________________-->
 
 </div>
@@ -231,7 +241,7 @@ function validateFormupdateprofile()
 
 
 
-<?php 
+<?php
 if($data["status_user"]==3 || $data["status_user"]==4){
 ?>
 
@@ -249,4 +259,3 @@ if($data["status_user"]==3 || $data["status_user"]==4){
 <?php
 }//if
 ?>
-
