@@ -247,13 +247,34 @@ if($data["status_user"]==3 || $data["status_user"]==4){
 
 <div align="center">
 
+<table>
+<tr>
+	<td></td>
+	<td></td>
+</tr>
+<tr>
+	<td>
+		<form method="post" action="viewsijil">
+	<input type="hidden" name="userid" value="<?php echo $data["codeuser"];?>" />
+	<input type="submit" name="viewsijilll" value="viewsijil" />
+
+	</form>
+</td>
+	<td>
+		<form method="post" action="printsijil">
+		<input type="hidden" name="userid" value="<?php echo $data["codeuser"];?>" />
+		<input type="submit" name="printsijil" value="printsijil" />
+
+		</form>
+	</td>
+</tr>
+</table>
 
 
-<form method="post" action="viewsijil">
-<input type="hidden" name="userid" value="<?php echo $data["codeuser"];?>" />
-<input type="submit" name="viewsijilll" value="viewsijil" />
 
-</form>
+
+
+
 </div>
 
 <?php
