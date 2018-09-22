@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e197508d-69f2-4683-809b-d1405a032f90" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/application/config/database.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/config/database.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/controllers/user_control.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/user_control.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/user/dompdf/lib/fonts/log.htm" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/user/dompdf/lib/fonts/log.htm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/user/editborang.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/user/editborang.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -31,20 +34,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="register.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/views/register.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
-              <caret line="379" column="168" selection-start-line="379" selection-start-column="89" selection-end-line="379" selection-end-column="168" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="main_control.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/controllers/main_control.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="157" column="4" selection-start-line="157" selection-start-column="4" selection-end-line="160" selection-end-column="46" />
+            <state relative-caret-position="380">
+              <caret line="203" column="5" lean-forward="true" selection-start-line="138" selection-start-column="8" selection-end-line="203" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -52,8 +46,8 @@
       <file leaf-file-name="user_control.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/controllers/user_control.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="278">
-              <caret line="97" column="64" selection-start-line="97" selection-start-column="64" selection-end-line="97" selection-end-column="64" />
+            <state relative-caret-position="1128">
+              <caret line="334" column="10" lean-forward="true" selection-start-line="334" selection-start-column="10" selection-end-line="334" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -70,8 +64,20 @@
       <file leaf-file-name="editborang.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/views/user/editborang.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
-              <caret line="57" column="136" selection-start-line="57" selection-start-column="131" selection-end-line="57" selection-end-column="136" />
+            <state relative-caret-position="340">
+              <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+              <folding>
+                <element signature="n#style#0;n#input#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="register.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/views/register.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="105">
+              <caret line="607" column="29" lean-forward="true" selection-start-line="607" selection-start-column="29" selection-end-line="607" selection-end-column="29" />
             </state>
           </provider>
         </entry>
@@ -81,9 +87,14 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>s</find>
-      <find>gamba</find>
       <find>sila kepil</find>
       <find>form</find>
+      <find>gamba</find>
+      <find>alamat</find>
+      <find>ala</find>
+      <find>kelas</find>
+      <find>tari</find>
+      <find>alamatstesyen</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -92,8 +103,9 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/application/views/user/editborang.php" />
         <option value="$PROJECT_DIR$/application/views/user/profail.php" />
+        <option value="$PROJECT_DIR$/application/views/register.php" />
+        <option value="$PROJECT_DIR$/application/views/user/editborang.php" />
         <option value="$PROJECT_DIR$/application/controllers/user_control.php" />
         <option value="$PROJECT_DIR$/application/config/database.php" />
       </list>
@@ -130,18 +142,6 @@
               <item name="radiocar" type="b2602c69:ProjectViewProjectNode" />
               <item name="radiocar" type="462c0819:PsiDirectoryNode" />
               <item name="application" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="radiocar" type="b2602c69:ProjectViewProjectNode" />
-              <item name="radiocar" type="462c0819:PsiDirectoryNode" />
-              <item name="application" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="radiocar" type="b2602c69:ProjectViewProjectNode" />
-              <item name="radiocar" type="462c0819:PsiDirectoryNode" />
-              <item name="application" type="462c0819:PsiDirectoryNode" />
-              <item name="controllers" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="radiocar" type="b2602c69:ProjectViewProjectNode" />
@@ -188,12 +188,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1537542929579</updated>
-      <workItem from="1537542931125" duration="7309000" />
+      <workItem from="1537542931125" duration="13293000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7309000" />
+    <option name="totallyTimeSpent" value="13293000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
@@ -235,31 +235,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/user/editborang.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="57" column="136" selection-start-line="57" selection-start-column="131" selection-end-line="57" selection-end-column="136" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/views/guest/registration.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="190">
           <caret line="78" column="78" selection-start-line="78" selection-start-column="78" selection-end-line="78" selection-end-column="78" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/register.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="379" column="168" selection-start-line="379" selection-start-column="89" selection-end-line="379" selection-end-column="168" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/controllers/main_control.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="157" column="4" selection-start-line="157" selection-start-column="4" selection-end-line="160" selection-end-column="46" />
         </state>
       </provider>
     </entry>
@@ -270,10 +249,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/main_control.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="203" column="5" lean-forward="true" selection-start-line="138" selection-start-column="8" selection-end-line="203" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/register.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="607" column="29" lean-forward="true" selection-start-line="607" selection-start-column="29" selection-end-line="607" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/user/editborang.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+          <folding>
+            <element signature="n#style#0;n#input#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/application/controllers/user_control.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="278">
-          <caret line="97" column="64" selection-start-line="97" selection-start-column="64" selection-end-line="97" selection-end-column="64" />
+        <state relative-caret-position="1128">
+          <caret line="334" column="10" lean-forward="true" selection-start-line="334" selection-start-column="10" selection-end-line="334" selection-end-column="10" />
         </state>
       </provider>
     </entry>

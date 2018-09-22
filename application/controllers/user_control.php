@@ -287,6 +287,62 @@ class User_control extends CI_Controller {
         return $final_image;
     }
 
+    public function updateborang(){
+        #print_r($_POST);
+        $site=site_url();
+        $base=base_url();
+
+
+
+
+        $handphone = $_POST['handphone'];
+        $email = $_POST['email'];
+        $alamatrumah = $_POST['alamatrumah'];
+        $codeuser=$_SESSION["logs"]["user_id"];
+
+        $datefull=date("Y-m-d H:i:s");
+
+
+        if($email==""){
+            die("Please make Sure data is correct");
+
+        }
+
+
+
+//check email dh berdaftar
+        $q="select count(*) from tbl_user a where a.email='$email' and flag='1' and codeuser <> '$codeuser'";
+        list($adatak)=mysql_fetch_row(mysql_query($q));
+        if($adatak!=0){
+            die("email sudah digunakan");
+        }//
+
+
+
+
+            $sql= "update tbl_user set email='$_POST[email]', alamatrumah='$_POST[alamatrumah]',pokskodrumah='$_POST[pokskodrumah]',bandarnegerirumah='$_POST[bandarnegerirumah]',alamatsurat='$_POST[alamatsurat]',poskodsurat='$_POST[poskodsurat]' ,bandarnegerisurat='$_POST[bandarnegerisurat]' ,telefonrumah='$_POST[telefonrumah]', faxrumah='$_POST[faxrumah]', handphone='$_POST[handphone]', pekerjaan='$_POST[pekerjaan]',
+	alamatkerja='$_POST[alamatkerja]', poskodkerja='$_POST[poskodkerja]', bandarnegerikerja='$_POST[bandarnegerikerja]',
+
+	tarikhlulusrae='$_POST[tarikhlulusrae]' ,callsign='$_POST[callsign]', tarikhluluscw='$_POST[tarikhluluscw]', kelasab='$_POST[kelasab]', cmcclientid='$_POST[cmcclientid]',
+	tarikhtamatlesen='$_POST[tarikhtamatlesen]' ,alamatstesyen='$_POST[alamatstesyen]', poskodstesyen='$_POST[poskodstesyen]', bandarnegeristesyen='$_POST[bandarnegeristesyen]', datum='$_POST[datum]',
+	kawasanoperasipancar='$_POST[kawasanoperasipancar]' ,latitut='$_POST[latitut]', longitud='$_POST[longitud]', noflat='$_POST[noflat]', jeniskenderaan='$_POST[jeniskenderaan]',
+	mobilerigjenama1='$_POST[mobilerigjenama1]' ,mobilerignosiri1='$_POST[mobilerignosiri1]', mobilerigmodel1='$_POST[mobilerigmodel1]', mobilerigjenama2='$_POST[mobilerigjenama2]', mobilerignosiri2='$_POST[mobilerignosiri2]',
+	mobilerigmodel2='$_POST[mobilerigmodel2]' ,mobilerigjenama3='$_POST[mobilerigjenama3]', mobilerignosiri3='$_POST[mobilerignosiri3]', mobilerigmodel3='$_POST[mobilerigmodel3]', handyjenama1='$_POST[handyjenama1]',
+	handynosiri1='$_POST[handynosiri1]' ,handymodel1='$_POST[handymodel1]', handyjenama2='$_POST[handyjenama2]', handynosiri2='$_POST[handynosiri2]', handymodel2='$_POST[handymodel2]',
+	handyjenama3='$_POST[handyjenama3]' ,handynosiri3='$_POST[handynosiri3]', handymodel3='$_POST[handymodel3]' where codeuser='$codeuser'"; // insert data arahan sql ke dalam table
+
+//        echo $sql;
+        mysql_query($sql);
+        echo "<script>
+alert('Data updated');
+window.location.href='$site/user_control/profile?ref=profile';
+</script>";
+
+//        header("Location: $site/user_control/profile?ref=profile");
+
+
+    }
+
 
 
 

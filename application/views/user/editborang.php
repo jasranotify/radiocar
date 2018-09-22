@@ -16,23 +16,38 @@ tr.noBorder td {
 
 <script type="text/javascript">
 <!--
-function validateform(){
-	
-var empt = document.forms["payment"]["resitbayaran"].value;  
-if (empt == "")  
-{  
-alert("Please Select receipt image");  
-return false;  
-}  
-	
-	
-	
-}//function validateform()
+    function validateForm () {
+        // alert("sss");
+
+        var alamatrumah=document.forms["register"]["alamatrumah"].value;
+        if (alamatrumah==null || alamatrumah==""){alert("Sila masukkan alamat rumah");return false;}
+
+        var pokskodrumah=document.forms["register"]["pokskodrumah"].value;
+        if (pokskodrumah==null || pokskodrumah==""){alert("Sila masukkan poskod rumah");return false;}
+
+        var bandarnegerirumah=document.forms["register"]["bandarnegerirumah"].value;
+        if (bandarnegerirumah==null || bandarnegerirumah==""){alert("Sila masukkan bandar & negeri rumah");return false;}
+
+        var handphone=document.forms["register"]["handphone"].value;
+        if (handphone==null || handphone==""){alert("Sila masukkan no handphone anda");return false;}
+
+        var email=document.forms["register"]["email"].value;
+        if (email==null || email==""){alert("Sila masukkan email anda");return false;}
+
+        var re = /\S+@\S+\.\S+/;
+//alert(email);
+        var emailvalid=re.test(email);
+        //if(emailvalid){alert("ok cun");}
+        if(!emailvalid){alert("wrong email format");return false;}
+    }
 </script>
 
 
 <?php
-$codeuser=$_POST["userid"];
+//echo "<pre>";
+//print_r($_SESSION);die;
+$codeuser=$_SESSION["logs"]["user_id"];
+$submitbutton="<input type=\"submit\" name=\"updateborang\" value=\"UPDATE\" style=\"background-color: #4eb1ff;font-size: large;font-weight: bold\">";
 
 
 #$qq="SELECT a.*,b.price,b.inv_id,b.date_issued,b.inv_status,b.img_resit,b.*  FROM tbl_user a,tbl_inv b WHERE b.flag='1' AND b.user_id=a.codeuser AND b.flag='1' and a.codeuser='$codeuser'";
@@ -48,7 +63,8 @@ while($dataaa=mysql_fetch_array($rr)){
 }
 </style>
 <div align="center">
-    <form name="editinfouser" action="" method="post">
+<!--    <form name="register" onSubmit="return validateForm()" action="" method="post">-->
+        <form name="register" onSubmit="return validateForm()" method="post" action="<?php echo $site."/user_control/updateborang"; ?>" enctype="multipart/form-data">
 <table width="80%" border="1" cellpadding="4" cellspacing="0">
   <tr>
     <td colspan="4" align="center" bgcolor="#6699FF"><strong>PERMOHONAN MENJADI AHLI</strong></td>
@@ -87,7 +103,7 @@ while($dataaa=mysql_fetch_array($rr)){
     </td>
   </tr>
   <tr class="noBorder">
-    <td>&nbsp;</td>
+    <td><?php echo $submitbutton; ?></td>
     <td>&nbsp;</td>
     <td>&nbsp;</td>
   </tr>
@@ -128,7 +144,23 @@ while($dataaa=mysql_fetch_array($rr)){
     <td><strong>Poskod</strong></td>
     <td><input type="text" name="pokskodrumah" value="<?php echo $dataaa["pokskodrumah"]; ?>" ></td>
     <td><strong>Bandar &amp; Negeri</strong></td>
-    <td><input type="text" name="bandarnegerirumah" value="<?php echo $dataaa["bandarnegerirumah"]; ?>" ></td>
+    <td>
+<!--        <input type="text" name="bandarnegerirumah" value="--><?php //echo $dataaa["bandarnegerirumah"]; ?><!--" >-->
+        <select name="bandarnegerirumah">
+            <option value="">Sila pilih</option>
+            <?php
+            $q="SELECT * FROM tbl_daerah";
+            $r=mysql_query($q);
+            while($data=mysql_fetch_array($r)){
+                #echo $data["daerah"];
+                $value="$data[daerah]-$data[negeri]";
+                if($value==$dataaa["bandarnegerirumah"]){$selected="selected";}
+                else{$selected="";}
+                echo "<option value='$value' $selected>$data[negeri]-$data[daerah]</option>";
+            }//while
+            ?>
+        </select>
+    </td>
   </tr>
   <tr>
     <td>&nbsp;</td>
@@ -195,21 +227,21 @@ while($dataaa=mysql_fetch_array($rr)){
   </tr>
   <tr>
     <td><strong>Tarikh Lulus RAE</strong></td>
-    <td><?php echo $dataaa["tarikhlulusrae"]; ?></td>
+    <td><input type="date" name="tarikhlulusrae" value="<?php echo $dataaa["tarikhlulusrae"]; ?>"> </td>
     <td><strong>Callsign</strong></td>
-    <td><?php echo $dataaa["callsign"]; ?></td>
+    <td><input type="text" name="callsign" value="<?php echo $dataaa["callsign"]; ?>" ></td>
   </tr>
   <tr>
     <td><strong>Tarikh Lulus CW </strong></td>
-    <td><?php echo $dataaa["tarikhluluscw"]; ?></td>
+    <td><input type="date" name="tarikhluluscw" value="<?php echo $dataaa["tarikhluluscw"]; ?>"></td>
     <td><strong>Kelas (A/B) </strong></td>
-    <td><?php echo $dataaa["kelasab"]; ?></td>
+    <td><input type="text" name="kelasab" value="<?php echo $dataaa["kelasab"]; ?>" ></td>
   </tr>
   <tr>
     <td><strong>CMC Client ID </strong></td>
-    <td><?php echo $dataaa["cmcclientid"]; ?></td>
+    <td><input type="text" name="cmcclientid" value="<?php echo $dataaa["cmcclientid"]; ?>" ></td>
     <td><strong>Tarikh Tamat Lesen</strong></td>
-    <td><?php echo $dataaa["tarikhtamatlesen"]; ?></td>
+    <td><input type="date" name="tarikhtamatlesen" value="<?php echo $dataaa["tarikhtamatlesen"]; ?>"></td>
   </tr>
   <tr class="noBorder">
     <td>&nbsp;</td>
@@ -222,31 +254,31 @@ while($dataaa=mysql_fetch_array($rr)){
   </tr>
   <tr>
     <td><strong>Lokasi (Alamat Stesyen)</strong></td>
-    <td colspan="3"><?php echo $dataaa["alamatstesyen"]; ?></td>
+    <td colspan="3"><textarea name="alamatstesyen" cols="70" rows="3"><?php echo $dataaa["alamatstesyen"]; ?></textarea></td>
   </tr>
   <tr>
     <td><strong>Poskod</strong></td>
-    <td><?php echo $dataaa["poskodstesyen"]; ?></td>
+    <td><input type="text" name="poskodstesyen" value="<?php echo $dataaa["poskodstesyen"]; ?>" ></td>
     <td><strong>Bandar & Negeri</strong></td>
-    <td><?php echo $dataaa["bandarnegeristesyen"]; ?></td>
+    <td><input type="text" name="bandarnegeristesyen" value="<?php echo $dataaa["bandarnegeristesyen"]; ?>" ></td>
   </tr>
   <tr>
     <td><strong>Ketinggian dari paras laut</strong></td>
-    <td><?php echo $dataaa["datum"]; ?></td>
+    <td><input type="text" name="datum" value="<?php echo $dataaa["datum"]; ?>" ></td>
     <td><strong>Kaw. Operasi Memancar</strong></td>
-    <td><?php echo $dataaa["kawasanoperasipancar"]; ?></td>
+    <td><input type="text" name="kawasanoperasipancar" value="<?php echo $dataaa["kawasanoperasipancar"]; ?>" ></td>
   </tr>
   <tr>
     <td><strong>Latitude (oN)</strong></td>
-    <td><?php echo $dataaa["latitut"]; ?></td>
+    <td><input type="text" name="latitut" value="<?php echo $dataaa["latitut"]; ?>" ></td>
     <td><strong>Longiture (o  E) </strong></td>
-    <td><?php echo $dataaa["longitud"]; ?></td>
+    <td><input type="text" name="longitud" value="<?php echo $dataaa["longitud"]; ?>" ></td>
   </tr>
   <tr>
     <td><strong>No. Kenderaan </strong></td>
-    <td><?php echo $dataaa["noflat"]; ?></td>
+    <td><input type="text" name="noflat" value="<?php echo $dataaa["noflat"]; ?>" ></td>
     <td><strong>Jenis Kenderaan </strong></td>
-    <td><?php echo $dataaa["jeniskenderaan"]; ?></td>
+    <td><input type="text" name="jeniskenderaan" value="<?php echo $dataaa["jeniskenderaan"]; ?>" ></td>
   </tr>
   <tr>
     <td>&nbsp;</td>
@@ -297,6 +329,8 @@ while($dataaa=mysql_fetch_array($rr)){
     <td><input type="text" name="handymodel3" value="<?php echo $dataaa["handymodel3"]; ?>" ></td>
   </tr>
 </table>
+
+        <?php echo $submitbutton; ?>
     </form>
 
 
