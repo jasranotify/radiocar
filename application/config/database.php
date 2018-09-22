@@ -49,7 +49,7 @@ $active_group = 'default';
 $active_record = TRUE;
 
 $db['default']['hostname'] = 'localhost';
-#$db['default']['username'] = 'root';
+$db['default']['username'] = 'root';
 $db['default']['password'] = '9ade67133318c581265824aec6jdP7088S';
 #$db['default']['password'] = '';
 $db['default']['database'] = 'radiocar';
