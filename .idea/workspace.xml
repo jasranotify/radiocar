@@ -2,15 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e197508d-69f2-4683-809b-d1405a032f90" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/views/user/editborang.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sijil/UID00000458.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application/config/database.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/config/database.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/controllers/email_control.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/email_control.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/controllers/user_control.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/user_control.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/presiden/dompdf/lib/fonts/log.htm" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/presiden/dompdf/lib/fonts/log.htm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/user/profail.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/user/profail.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -57,11 +49,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="user_control.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="user_control.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/controllers/user_control.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="278">
               <caret line="97" column="64" selection-start-line="97" selection-start-column="64" selection-end-line="97" selection-end-column="64" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="database.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/application/config/database.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="210">
+              <caret line="53" column="1" selection-start-line="53" selection-start-column="1" selection-end-line="53" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -94,6 +95,7 @@
         <option value="$PROJECT_DIR$/application/views/user/editborang.php" />
         <option value="$PROJECT_DIR$/application/views/user/profail.php" />
         <option value="$PROJECT_DIR$/application/controllers/user_control.php" />
+        <option value="$PROJECT_DIR$/application/config/database.php" />
       </list>
     </option>
   </component>
@@ -128,6 +130,12 @@
               <item name="radiocar" type="b2602c69:ProjectViewProjectNode" />
               <item name="radiocar" type="462c0819:PsiDirectoryNode" />
               <item name="application" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="radiocar" type="b2602c69:ProjectViewProjectNode" />
+              <item name="radiocar" type="462c0819:PsiDirectoryNode" />
+              <item name="application" type="462c0819:PsiDirectoryNode" />
+              <item name="config" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="radiocar" type="b2602c69:ProjectViewProjectNode" />
@@ -180,12 +188,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1537542929579</updated>
-      <workItem from="1537542931125" duration="6975000" />
+      <workItem from="1537542931125" duration="7309000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6975000" />
+    <option name="totallyTimeSpent" value="7309000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
@@ -198,7 +206,7 @@
       <window_info anchor="bottom" id="Version Control" />
       <window_info anchor="bottom" id="Terminal" />
       <window_info anchor="right" id="Remote Host" />
-      <window_info content_ui="combo" id="Project" order="0" weight="0.24962178" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24962178" />
       <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
       <window_info anchor="right" id="Database" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -266,6 +274,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="278">
           <caret line="97" column="64" selection-start-line="97" selection-start-column="64" selection-end-line="97" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/config/database.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="53" column="1" selection-start-line="53" selection-start-column="1" selection-end-line="53" selection-end-column="1" />
         </state>
       </provider>
     </entry>
