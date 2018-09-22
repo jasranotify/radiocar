@@ -82,6 +82,23 @@ class User_control extends CI_Controller {
 		//$this->load->view('template/footer');
 	}
 
+	public function uploadprofilepic(){
+        $site=site_url();
+        $base=base_url();
+        $user_id=$_POST["userid"];
+//        echo $user_id;die;
+
+        //$file_content = scaleImageFileToBlob($_FILES["gambar"]["tmp_name"]);
+        $file_content = $this->scaleImageFileToBlob($_FILES["gambar"]["tmp_name"]);
+        //$this->abc();
+        $file_content = addslashes($file_content);
+        $q="update tbl_user set gambar='$file_content' where codeuser='$user_id'";
+
+        mysql_query($q);
+        header("Location: $site/user_control/profile?ref=Profile");
+
+    }
+
 
 	public function viewborang()
 	{
@@ -105,6 +122,30 @@ class User_control extends CI_Controller {
 
 		//$this->load->view('template/footer');
 	}
+
+    public function editborang()
+    {
+
+
+        $site=site_url();
+        $base=base_url();
+
+        $data=array(
+            'page' => "Editborang",
+            'site' => site_url(),
+            'base' => base_url()
+        );
+        //$this->load->view('template/banner_2',$data);
+
+
+        //$this->load->view('template/menu',$data);
+        //$this->load->view('template/div_open',$data);
+        $this->load->view('user/editborang',$data);
+        //$this->load->view('template/div_close',$data);
+
+
+        //$this->load->view('template/footer');
+    }
 
 	public function viewsijil()
 	{
@@ -178,6 +219,73 @@ class User_control extends CI_Controller {
 		$this->load->view('template/div_close',$data);
 
 	}
+
+    public function scaleImageFileToBlob($file) {
+
+        //echo $source_pic = $file;
+        $max_width = 500;
+        $max_height = 500;
+        //list($width, $height, $type, $attr) = getimagesize($file);
+        list($width, $height, $image_type) = getimagesize($file);
+        //$dsas = getimagesize(trim($file));
+        //echo $image_type;
+        //print_r(getimagesize($file));
+        switch ($image_type)
+        {
+            case 1: $src = imagecreatefromgif($file); break;
+            case 2: $src = imagecreatefromjpeg($file);  break;
+            case 3: $src = imagecreatefrompng($file); break;
+            default: return '';  break;
+        }
+
+        $x_ratio = $max_width / $width;
+        $y_ratio = $max_height / $height;
+
+        if( ($width <= $max_width) && ($height <= $max_height) ){
+            $tn_width = $width;
+            $tn_height = $height;
+        }elseif (($x_ratio * $height) < $max_height){
+            $tn_height = ceil($x_ratio * $height);
+            $tn_width = $max_width;
+        }else{
+            $tn_width = ceil($y_ratio * $width);
+            $tn_height = $max_height;
+        }
+
+        $tmp = imagecreatetruecolor($tn_width,$tn_height);
+
+        /* Check if this image is PNG or GIF, then set if Transparent*/
+        if(($image_type == 1) OR ($image_type==3))
+        {
+            imagealphablending($tmp, false);
+            imagesavealpha($tmp,true);
+            $transparent = imagecolorallocatealpha($tmp, 255, 255, 255, 127);
+            imagefilledrectangle($tmp, 0, 0, $tn_width, $tn_height, $transparent);
+        }
+        imagecopyresampled($tmp,$src,0,0,0,0,$tn_width, $tn_height,$width,$height);
+
+        /*
+         * imageXXX() only has two options, save as a file, or send to the browser.
+         * It does not provide you the oppurtunity to manipulate the final GIF/JPG/PNG file stream
+         * So I start the output buffering, use imageXXX() to output the data stream to the browser,
+         * get the contents of the stream, and use clean to silently discard the buffered contents.
+         */
+        ob_start();
+
+        switch ($image_type)
+        {
+            case 1: imagegif($tmp); break;
+            case 2: imagejpeg($tmp, NULL, 100);  break; // best quality
+            case 3: imagepng($tmp, NULL, 0); break; // no compression
+            default: echo ''; break;
+        }
+
+        $final_image = ob_get_contents();
+
+        ob_end_clean();
+
+        return $final_image;
+    }
 
 
 

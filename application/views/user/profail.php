@@ -120,7 +120,12 @@ function validateFormupdateprofile()
 <!--_______________________user profile_________________________________________________-->
 <h1>Profile</h1>
 <br>
-
+<?php echo '<img width="300" src="data:image/jpeg;base64,'.base64_encode( $data['gambar'] ).'"/>'; ?>
+    <form method="post" name="uploadphoto" action="<?php echo $site; ?>/user_control/uploadprofilepic" enctype="multipart/form-data">
+        <input type="hidden" name="userid" value="<?php echo $userid ?>">
+        <input type='file' name="gambar" id="gambar" accept="image/x-png,image/gif,image/jpeg" onChange="readURL(this);" />
+        <input type="submit" name="uploadprofilepic" value="Upload">
+    </form>
 
 <form method="post" name="updateee" action="" onsubmit="return validateFormupdateprofile()">
 <table border="0" width="30%">
@@ -222,7 +227,7 @@ function validateFormupdateprofile()
 <tr>
   <td>&nbsp;</td>
   <td>&nbsp;</td>
-<td><input type="submit" name="update" id="update" value="Update" /></td>
+<td><input type="submit" name="update" id="update" value="Update Password" /></td>
 </tr>
 </table>
 </form>
@@ -235,13 +240,31 @@ function validateFormupdateprofile()
 
 
 <div align="center">
+    <table>
+        <tr>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>
+                <form method="post" action="viewborang">
+                    <input type="hidden" name="userid" value="<?php echo $data["codeuser"];?>" />
+                    <input type="submit" name="viewborangg" value="Viewborang" />
+
+                </form>
+            </td>
+            <td>
+                <form method="post" action="editborang">
+                    <input type="hidden" name="userid" value="<?php echo $data["codeuser"];?>" />
+                    <input type="submit" name="editborangg" value="Editborang" />
+
+                </form>
+            </td>
+        </tr>
+    </table>
 
 
-<form method="post" action="viewborang">
-<input type="hidden" name="userid" value="<?php echo $data["codeuser"];?>" />
-<input type="submit" name="viewborangg" value="viewborang" />
 
-</form>
 </div>
 
 
@@ -261,14 +284,14 @@ if($data["status_user"]==3 || $data["status_user"]==4){
 	<td>
 		<form method="post" action="viewsijil">
 	<input type="hidden" name="userid" value="<?php echo $data["codeuser"];?>" />
-	<input type="submit" name="viewsijilll" value="viewsijil" />
+	<input type="submit" name="viewsijilll" value="Viewsijil" />
 
 	</form>
 </td>
 	<td>
 		<form method="post" action="printsijil">
 		<input type="hidden" name="userid" value="<?php echo $data["codeuser"];?>" />
-		<input type="submit" name="printsijil" value="printsijil" />
+		<input type="submit" name="printsijil" value="Printsijil" />
 
 		</form>
 	</td>
