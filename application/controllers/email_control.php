@@ -71,8 +71,8 @@ class Email_control extends CI_Controller {
 		$ci->email->to($penerima);
 		$ci->email->subject($tajuk);
 		$ci->email->message($mesej);
-		// $ci->email->send();
-		// echo $ci->email->print_debugger();
+		$ci->email->send();
+		$ci->email->print_debugger();
 	}
 
 
