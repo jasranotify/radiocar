@@ -2,15 +2,26 @@
 //$datenow=date("Y-m-d H:i:s");
 ####mysql_query("update tbl_param set value_1='$datenow' where param_name='cronjob'");
 
+function _log($str) {
+    $log_file_name = dirname(__FILE__) . DIRECTORY_SEPARATOR."email_out.log";
+    $info = date("Y-m-d H:i:s") . "|" . $str . "\n";
+    print($info);
+    file_put_contents($log_file_name, $info, FILE_APPEND);
+}
+
+
 require_once("dompdf/dompdf_config.inc.php");
 spl_autoload_register('DOMPDF_autoload');
 
 
-echo $datenow;
-echo "<br>";
+//echo $datenow;
+//echo "<br>";
 
 $date = strtotime("+7 day", strtotime($datenow));
-echo $datedhincrease= date("Y-m-d", $date);
+$datedhincrease= date("Y-m-d", $date);
+
+//_log("Write to lcoal database failed:{$sql_rp}, reason:".$local_db->error);
+_log("Email cron batch run");
 
 
 
@@ -22,14 +33,15 @@ list($account)=mysql_fetch_row(mysql_query($q));
 
 
 
-echo $q="SELECT a.* FROM tbl_user a WHERE a.status_user='3' AND a.flag='1' and a.cron_check_expireddate_flag='0' AND a.expired_on < '$datedhincrease' limit 2";
+$q="SELECT a.* FROM tbl_user a WHERE a.status_user='3' AND a.flag='1' and a.cron_check_expireddate_flag='0' AND a.expired_on < '$datedhincrease' limit 2";
 $r=mysql_query($q);
 $i=0;
 while($data=mysql_fetch_array($r)){
-	echo "<br>";
-	echo "send email";
-	echo "<br>";
-	echo $q2="update tbl_user set cron_check_expireddate_flag='1' where id='$data[id]'";
+//	echo "<br>";
+//	echo "send email";
+//	echo "<br>";
+	$q2="update tbl_user set cron_check_expireddate_flag='1' where id='$data[id]'";
+    _log("user $data[codeuser] is checked for notification");
 	mysql_query($q2);
 	
 	
@@ -39,7 +51,7 @@ while($data=mysql_fetch_array($r)){
 	//0=belum dinilai,1=dah bayar,2=approved,3=rejected
 	
 	//insert invoice
-	echo $qx1="select inv_id from tbl_inv where user_id='$data[codeuser]' and (inv_status='0' or inv_status='1')";
+	$qx1="select inv_id from tbl_inv where user_id='$data[codeuser]' and (inv_status='0' or inv_status='1')";
 	list($dhkelaurinvkebelum)=mysql_fetch_row(mysql_query($qx1));	
 	
 	if($dhkelaurinvkebelum==""){//KALAU INV X KELAUR LAGI
@@ -51,6 +63,7 @@ while($data=mysql_fetch_array($r)){
 		  list($inv_id)=mysql_fetch_row(mysql_query($qc2));
 		  
 		  $code_inv="INV".sprintf('%08d', $inv_id);
+          _log("invoice $code_inv is issued");
 		  mysql_query("update tbl_inv set inv_id='$code_inv' where id='$inv_id'");
 		  
 	}///inv dikeluARKAN DI SINI SAHAJA
@@ -81,6 +94,7 @@ while($data=mysql_fetch_array($r)){
 		$mesej="Akaun akan tamat tempoh pada $expired_on .Anda perlu membuat bayaran RM $fee ke PUBLIC BANK account no $account .Sila log in di $base untuk memuat naikkan resit bayaran.";
 		//$ci->email_control->sendmail_dgnattachment($penghantar, $penerima,$tajuk,$mesej,$data["codeuser"]);
 		$ci->email_control->sendmail($penghantar, $penerima,$tajuk,$mesej);
+        _log("email is send to $penerima with mesej=$mesej");
 		
 		
 		  
