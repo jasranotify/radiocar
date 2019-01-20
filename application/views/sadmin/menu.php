@@ -44,7 +44,7 @@ if($_SESSION["logs"]["user_level"]){
 ?>	
 	  
              <li><a href="?ref=profile" <?php echo $activeprofile; ?>>Profile</a></li>
-			 <li><a href="?ref=invoice" <?php echo $activeinvoice; ?>>Invoice</a></li>
+
 			 
 			
 <?php

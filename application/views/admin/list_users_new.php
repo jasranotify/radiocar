@@ -74,7 +74,7 @@ while($data=mysql_fetch_array($r)){
     </td>
     <td>   
 		  <?php
-          if($_SESSION["logs"]["user_id"]!=$data["aid_verify1"] && $_SESSION["logs"]["user_level"]==2){
+          if($_SESSION["logs"]["user_id"]!=$data["aid_verify1"] && ($_SESSION["logs"]["user_level"]==2 || $_SESSION["logs"]["user_level"]==22 || $_SESSION["logs"]["user_level"]==222)){
           
           ?>
           

@@ -129,7 +129,7 @@ if (date==null || date==""){alert("Please insert date of registration");return f
             <td>:</td>
             <td>
               <input type="radio" name="jenisadmin" value="2"/>
-              Introducer </br>
+              Setiausaha </br>
               <input type="radio" name="jenisadmin" value="22"/>
               Bendahari </br>
               <input type="radio" name="jenisadmin" value="222"/>

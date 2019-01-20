@@ -40,7 +40,13 @@ while($data=mysql_fetch_array($r)){
   <tr>
     <td><?php echo $a+1; ?></td>
     <td><?php echo $data["code_admin"]; ?></td>
-    <td><?php echo $data["leveladmin"]; ?></td>
+    <td><?php #echo $data["leveladmin"]; ?>
+        <?php
+        $lvl_admin=$data["leveladmin"];
+        if($lvl_admin=="introducer"){$lvl_admin="setiausaha";}
+        echo $lvl_admin;
+        ?>
+    </td>
     <td><?php echo $data["nama"]; ?></td>
     <td><?php echo $data["ic"]; ?></td>
     <td><?php echo $data["email"]; ?></td>

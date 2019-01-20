@@ -316,7 +316,7 @@ $level_user=$_SESSION["logs"]["user_level"];
 <?php
 
 if($level_user==1){$lname="Superadmin";}
-if($level_user==2){$lname="Introducer";}
+if($level_user==2){$lname="Setiausaha";}
 if($level_user==22){$lname="Bendahari";}
 if($level_user==222){$lname="Presiden";}
 if($level_user==3){$lname="Ahli";}

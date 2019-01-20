@@ -221,9 +221,9 @@ if($adatak!=0){
 	//die();
 
 
-	$qemailintroducer="SELECT email FROM tbl_admin WHERE leveladmin='introducer'";
+	$qemailintroducer="SELECT email FROM tbl_admin WHERE leveladmin='introducer' or leveladmin='bendahari' or leveladmin='president'";
 	$remailintroducer=mysql_query($qemailintroducer);
-	$emailintroducer="sss";
+	$emailintroducer="";
 	while($dataemailintroducer=mysql_fetch_array($remailintroducer)){
 		$emailintroducer.=$dataemailintroducer["email"].",";
 

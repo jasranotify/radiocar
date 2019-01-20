@@ -146,7 +146,13 @@ function validateFormupdateprofile()
   <tr>
     <td>Level </td>
     <td>:</td>
-    <td><?php echo $data["leveladmin"] ?></td>
+    <td>
+        <?php
+        $lvl_admin=$data["leveladmin"];
+        if($lvl_admin=="introducer"){$lvl_admin="setiausaha";}
+        echo $lvl_admin;
+        ?>
+    </td>
   </tr>
   <tr>
     <td>Code</td>
